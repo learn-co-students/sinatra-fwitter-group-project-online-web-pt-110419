@@ -10,9 +10,7 @@ class UsersController < ApplicationController
 
   post'/signup' do
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
-    # binding.pry
     if @user.save && @user.username != "" && @user.email != "" && @user.authenticate(params[:password])
-#|| @user.password == ""
         session[:user_id] = @user.id
         redirect '/tweets'
     else
@@ -47,17 +45,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # post '/logout' do
-  #     redirect '/login'
-  # end
   get '/users/:slug' do
     slug = params[:slug]
-    # binding.pry
     @user = User.find_by_slug(slug)
     erb :"users/show"
   end
-
-
-
 
 end
