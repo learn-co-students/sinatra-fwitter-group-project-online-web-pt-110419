@@ -1,7 +1,5 @@
 require './config/environment'
-
 class ApplicationController < Sinatra::Base
-
   configure do
     enable :sessions
     set :session_secret, "TOP SECRET"
@@ -61,5 +59,4 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
   end
-
 end
