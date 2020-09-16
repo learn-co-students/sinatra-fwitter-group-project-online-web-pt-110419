@@ -9,12 +9,12 @@ class User < ActiveRecord::Base
 	end
 
   def self.find_by_slug(slug)
-    new_array = []
+    slugged = []
     array = slug.split("-")
     array.each do |word|
-    new_array << word
+    slugged << word
     end
-    final = new_array.join(" ")
+    final = slugged.join(" ")
     self.find_by("username like ?", final)
   end
 
